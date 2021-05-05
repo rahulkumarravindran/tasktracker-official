@@ -6,13 +6,15 @@
 
 body{
   background-image: url("./components/static/todo1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 800px;
   
 }
 
 .Main{
   position: absolute;
   top: 37%;
-  left: 67%;
+  left: 50%;
   transform: translate(-50%,-50%);
   min-width: 350px;
   border: 3px solid grey;
@@ -55,3 +57,29 @@ body{
   margin-top: 6px;
 }
 
+.TaskInputForm {
+  margin-top: 10px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.TaskInputForm input {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(84, 89, 94);
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border: 2px solid rgb(84, 89, 94);
+  border-radius: 5px;
+}
+
+.TaskInputForm h4{
+  margin-bottom: 5px;
+}
+
+.MiddleLine {
+  margin-top: 10px;
+  border: 2px dotted rgb(84, 89, 94);
+  border-radius: 3px;
+  max-height: 4px;
+}

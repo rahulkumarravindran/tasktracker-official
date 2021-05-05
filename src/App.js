@@ -1,13 +1,16 @@
 import './App.css';
 import Tasks from './components/Tasks'
+import React, {useState} from 'react';
+import TaskInput from './components/TaskInput';
 
 
 function App() {
 
   const taskList= [{
-    taskName: 'Learn Machine Learning concepts', deadline: 'August 2021',}
-    ,{taskName: 'Learn Web development' , deadline : 'May 15th 2021'
+    taskName: 'Learn Machine Learning concepts', deadline: 'August 2021',description:''}
+    ,{taskName: 'Learn Web development' , deadline : 'May 15th 2021',description:''
   }]
+  const [flagAddTask,setFlagAddTask]=useState(true);
   return (
     <div className="body">
       <link rel="preconnect" href="https://fonts.gstatic.com"></link>
@@ -21,6 +24,10 @@ function App() {
         <div className="Middle">
           <Tasks tasks={taskList}/>
         </div> 
+        <div className="MiddleLine"></div>
+        <div className="TaskInputForm">
+          <TaskInput />
+        </div>
       </div>
     </div>
   );
