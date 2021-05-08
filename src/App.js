@@ -6,11 +6,24 @@ import TaskInput from './components/TaskInput';
 
 function App() {
 
-  const taskList= [{
-    taskName: 'Learn Machine Learning concepts', deadline: 'August 2021',description:''}
-    ,{taskName: 'Learn Web development' , deadline : 'May 15th 2021',description:''
-  }]
-  const [flagAddTask,setFlagAddTask]=useState(true);
+  const [taskList,settaskList]= useState([{
+    id:'1',taskName: 'Learn Machine Learning concepts',description:'', deadline: 'August 2021'}
+    ,{id:'2', taskName: 'Learn Web development',description:'' , deadline : 'May 15th 2021'
+  }])
+
+  const addTask = (task) => {
+    const id = taskList.length + 1;
+    const newTask = {...task, id: id}
+    settaskList([...taskList, newTask])
+  }
+
+  const deleteTask = (id) => {
+    settaskList(taskList.filter((task)=> task.id !==id))
+    console.log('delete')
+  }
+
+  //const [flagAddTask,setFlagAddTask]=useState(true);
+  
   return (
     <div className="body">
       <link rel="preconnect" href="https://fonts.gstatic.com"></link>
@@ -22,11 +35,11 @@ function App() {
           <button>New Task</button>
         </div>
         <div className="Middle">
-          <Tasks tasks={taskList}/>
+          <Tasks tasks={taskList} deleteTask={deleteTask}/>
         </div> 
         <div className="MiddleLine"></div>
         <div className="TaskInputForm">
-          <TaskInput />
+          <TaskInput addTask={addTask}/>
         </div>
       </div>
     </div>
