@@ -15,6 +15,7 @@ function App() {
     const id = taskList.length + 1;
     const newTask = {...task, id: id}
     settaskList([...taskList, newTask])
+    console.log(taskList)
   }
 
   const deleteTask = (id) => {
@@ -22,7 +23,11 @@ function App() {
     console.log('delete')
   }
 
-  //const [flagAddTask,setFlagAddTask]=useState(true);
+  const [flagAddTask,setFlagAddTask]=useState(false);
+
+  const toggleFlag = () => {
+    setFlagAddTask(!flagAddTask)
+  }
   
   return (
     <div className="body">
@@ -32,15 +37,15 @@ function App() {
       <div className="Main">
         <div className="Top">
           <h2>Tasks to Do</h2>
-          <button>New Task</button>
+          <button className={!flagAddTask ? "" : "redButton"} onClick={()=>toggleFlag()}>{!flagAddTask ?'New Task'  : 'Close'}</button>
         </div>
         <div className="Middle">
-          <Tasks tasks={taskList} deleteTask={deleteTask}/>
+          {taskList.length > 0 ? <Tasks tasks={taskList} deleteTask={deleteTask}/> : "No Tasks added yet"}
         </div> 
-        <div className="MiddleLine"></div>
+        {flagAddTask ? <><div className="MiddleLine"></div>
         <div className="TaskInputForm">
-          <TaskInput addTask={addTask}/>
-        </div>
+          <TaskInput addTask={addTask}/> 
+        </div></> : ''}
       </div>
     </div>
   );

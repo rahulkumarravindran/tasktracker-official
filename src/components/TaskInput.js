@@ -16,7 +16,7 @@ const TaskInput = (props) => {
             return
         }
 
-        props.addTask({taskName,setTaskDescription,deadline})
+        props.addTask({taskName,taskDescription,deadline})
 
         setTaskDescription('')
         setTaskName('')
